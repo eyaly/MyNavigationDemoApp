@@ -1,14 +1,13 @@
 package com.onm.mynavigationdemoapp
 
 import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
-import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import com.onm.mynavigationdemoapp.annotations.BasicFlow
+import com.onm.mynavigationdemoapp.annotations.NavFlow
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,6 +16,7 @@ import org.junit.runner.RunWith
 class MainActivityTest{
 
     @Test
+    @BasicFlow
     fun test_isActivityInView(){
         // The basic one - did the app launched and in view
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
@@ -24,6 +24,7 @@ class MainActivityTest{
     }
 
     @Test
+    @BasicFlow
     fun test_visibility_nextButton(){
         // The basic one - did the app launched and in view
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
@@ -31,6 +32,7 @@ class MainActivityTest{
     }
 
     @Test
+    @BasicFlow
     fun test_isTitleTextDisplayed(){
         // The basic one - did the app launched and in view
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
@@ -39,6 +41,7 @@ class MainActivityTest{
     }
 
     @Test
+    @NavFlow
     fun test_navSecondaryActivity(){
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
         onView(withId(R.id.btnToSecondActivity)).perform(click())
@@ -48,6 +51,7 @@ class MainActivityTest{
     }
 
     @Test
+    @NavFlow
     fun test_checkTextToSecondaryActivity(){
         val textToSend = "Testing Espresso Test"
         // Check if the text pass from the main to the secind activity

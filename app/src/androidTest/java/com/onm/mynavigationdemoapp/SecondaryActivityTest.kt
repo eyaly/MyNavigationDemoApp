@@ -1,11 +1,11 @@
 package com.onm.mynavigationdemoapp
 
-import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import com.onm.mynavigationdemoapp.annotations.BasicFlow
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
@@ -18,6 +18,7 @@ class SecondaryActivityTest{
     val activityRule:ActivityScenarioRule<SecondActivity> = ActivityScenarioRule(SecondActivity::class.java)
 
     @Test
+    @BasicFlow
     fun test_isActivityInView(){
         // The basic one - did the app launched and in view
         Espresso.onView(ViewMatchers.withId(R.id.btnToThirdActivity))

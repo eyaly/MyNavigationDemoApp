@@ -1,11 +1,11 @@
 apiVersion: v1alpha
 kind: espresso
 sauce:
-  region: us-west-1
+  region: eu-central-1
   # Controls how many suites are executed at the same time (sauce test env only).
-  concurrency: 2
+  concurrency: 5
   metadata:
-    name: Testing My Demo App Android with espresso
+    name: Testing My Navigation App Android with espresso
     tags:
       - e2e
       - release team
@@ -15,18 +15,18 @@ espresso:
   app: ./app/build/outputs/apk/debug/app-debug.apk
   testApp: ./app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
 suites:
-  - name: "Main suite"
+  - name: "Main Android Nav suite"
     emulators:
-      - name: Google Pixel C GoogleAPI Emulator
+      - name: "Android GoogleAPI Emulator"
         platformVersions:
-          - "8.1"
+          - "12.0"
     devices:
-      - name: "Google Pixel 3a"
-        platformVersion: 11
-      - name: "Motorola Nexus 6"
-        platformVersion: 7
       - name: "Samsung.*"
-        platformVersion: "8.0.0"
+        platformVersion: 13
+      - name: "Google Pixel.*"
+        platformVersion: "^1[1-2].*"
+      - name: "Xiaomi.*"
+        platformVersion: "^1[0-2].*"
 
 
 # Controls what artifacts to fetch when the suite on Sauce Cloud has finished.

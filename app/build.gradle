@@ -31,6 +31,16 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def versionName = variant.versionName
+            def versionCode = variant.versionCode
+            def buildType = variant.buildType.name
+            def newName = "myNavigationDemoApp-${versionName}-${versionCode}-${buildType}.apk"
+            outputFileName = newName
+        }
+    }
 }
 
 dependencies {

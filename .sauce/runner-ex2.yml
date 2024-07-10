@@ -1,0 +1,55 @@
+apiVersion: v1alpha
+kind: espresso
+sauce:
+  region: eu-central-1
+  # Controls how many suites are executed at the same time (sauce test env only).
+  concurrency: 5
+  retries: 3
+  metadata:
+    tags:
+      - e2e
+      - release team
+      - other tag
+    build: Release $CI_COMMIT_SHORT_SHA
+espresso:
+  app: ./app/build/outputs/apk/debug/app-debug.apk
+  testApp: ./app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+suites:
+  - name: "Example 2 - One class per device- MainActivityTest"
+    testOptions:
+      class:
+        - com.onm.mynavigationdemoapp.MainActivityTest
+    devices:
+      - name: "Samsung.*"
+        platformVersion: "13"
+        options:
+          # Possible values [ANY,PHONE,TABLET]
+          deviceType: PHONE
+  - name: "Example 2 - One class per device - SecondaryActivityTest"
+    testOptions:
+      class:
+        - com.onm.mynavigationdemoapp.SecondaryActivityTest
+    devices:
+      - name: "Samsung.*"
+        platformVersion: "12"
+        options:
+          # Possible values [ANY,PHONE,TABLET]
+          deviceType: PHONE
+  - name: "Example 2 - One class per device - AppDeepLinkingTest"
+    testOptions:
+      class:
+        - com.onm.mynavigationdemoapp.AppDeepLinkingTest
+    devices:
+      - name: "Samsung.*"
+        platformVersion: "11"
+        options:
+          # Possible values [ANY,PHONE,TABLET]
+          deviceType: PHONE
+
+# Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
+artifacts:
+  download:
+    when: always
+    match:
+      - junit.xml
+    directory: ./artifacts/

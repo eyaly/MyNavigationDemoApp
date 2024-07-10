@@ -2,4 +2,5 @@
     <string name="app_name">MyNavigationDemoApp</string>
     <string name="text_main_activity">Hello You! Please enter a text</string>
     <string name="KEY_EXTRA_MESSAGE">sendText</string>
+    <string name="text_main_activity_error">Hello You!</string>
 </resources>

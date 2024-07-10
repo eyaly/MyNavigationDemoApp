@@ -25,5 +25,13 @@ class SecondaryActivityTest{
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
+    @Test
+    @BasicFlow
+    fun test_isActivityInViewError(){
+        // The basic one - did the app launched and in view
+        Espresso.onView(ViewMatchers.withId(R.id.btnToThirdActivity))
+            .check(ViewAssertions.matches(ViewMatchers.isNotClickable()))
+    }
+
 
 }

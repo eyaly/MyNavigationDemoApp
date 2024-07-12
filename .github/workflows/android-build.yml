@@ -40,3 +40,12 @@ jobs:
         with:
           name: ${{ env.APK_NAME }}
           path: app/build/outputs/apk/debug/${{ env.APK_NAME }}
+
+      - name: Upload to TestFairy
+        env:
+          TF_ACCESS_KEY: ${{ secrets.TF_ACCESS_KEY }}
+        run: |
+              curl https://upload.testfairy.com/api/upload \
+                -F api_key=$TF_ACCESS_KEY \
+                -F file=app/build/outputs/apk/debug/${{ env.APK_NAME }} \
+                -F groups="Android_S22"

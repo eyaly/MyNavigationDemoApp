@@ -47,5 +47,5 @@ jobs:
         run: |
               curl https://upload.testfairy.com/api/upload \
                 -F api_key=$TF_ACCESS_KEY \
-                -F file=app/build/outputs/apk/debug/${{ env.APK_NAME }} \
+                -F file=@app/build/outputs/apk/debug/${{ env.APK_NAME }} \
                 -F groups="Android_S22"

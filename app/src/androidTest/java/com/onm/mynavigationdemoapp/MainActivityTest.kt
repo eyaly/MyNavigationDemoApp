@@ -30,7 +30,6 @@ class MainActivityTest {
 
     @Test
     @BasicFlow
-    @Ignore
     fun test_isActivityInView() {
         // The basic one - did the app launched and in view
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
@@ -39,11 +38,19 @@ class MainActivityTest {
 
     @Test
     @BasicFlow
-    @Ignore
     fun test_visibility_nextButton() {
         // The basic one - did the app launched and in view
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
         onView(withId(R.id.btnToSecondActivity)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    @BasicFlow
+    fun test_isTitleTextDisplayedError() {
+        // The basic one - did the app launched and in view
+        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        onView(withId(R.id.mainScreenText))
+            .check(matches(withText(R.string.text_main_activity_error)))
     }
 
     @Test
@@ -97,16 +104,6 @@ class MainActivityTest {
         //val bitmap = onView(isRoot()).captureToBitmap()
         //bitmap.writeToTestStorage (nameRule.methodName)
         //assertScreenshotMatchesGolden (goldenName = "test_checkTextToSecondaryActivity", bitmap)
-    }
-
-    @Test
-    @BasicFlow
-    @Ignore
-    fun test_isTitleTextDisplayedError() {
-        // The basic one - did the app launched and in view
-        val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-        onView(withId(R.id.mainScreenText))
-            .check(matches(withText(R.string.text_main_activity_error)))
     }
 
 

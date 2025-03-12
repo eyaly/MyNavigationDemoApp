@@ -11,8 +11,8 @@ android {
         applicationId "com.onm.mynavigationdemoapp"
         minSdk 29
         targetSdk 33
-        versionCode 11
-        versionName "4.0"
+        versionCode 3
+        versionName "4.1"
 
         // For espresso
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -20,7 +20,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true // Enable code shrinking
+            shrinkResources true  // Remove unused resources
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

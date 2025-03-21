@@ -35,6 +35,9 @@ jobs:
         id: capture-apk-name
         run: echo "APK_NAME=$(basename $(ls app/build/outputs/apk/debug/myNavigationDemoApp-*.apk))" >> $GITHUB_ENV
 
+      - name: Print APK Name
+        run: echo "APK Name is: ${{ env.APK_NAME }}"
+
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
